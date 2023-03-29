@@ -1,0 +1,45 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="75" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="IncorrectHttpHeaderInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="customHeaders">
+        <set>
+          <option value="{}" />
+        </set>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="id" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="PyQt6.QtWidgets.returnPressed.*" />
+          <option value="PyQt6.QtWidgets.clicked.*" />
+          <option value="PyQt6.QtCore.timeout.*" />
+          <option value="PyQt6.QtWidgets.valueChanged.*" />
+          <option value="PyQt6.QtWidgets.textChanged.*" />
+          <option value="PyQt6.QtBluetooth.connected.*" />
+          <option value="PyQt6.QtCore.readyRead.*" />
+          <option value="PyQt6.QtBluetooth.disconnected.*" />
+          <option value="PyQt6.QtBluetooth.error.*" />
+          <option value="PyQt6.QtWidgets.released.*" />
+          <option value="PyQt6.QtWidgets.pressed.*" />
+          <option value="PyQt6.QtWidgets.sliderReleased.*" />
+          <option value="nextcord.voice_client.VoiceProtocol.*" />
+          <option value="tuple.*" />
+          <option value="type.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

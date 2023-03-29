@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+    <entry key="Command_Alias">("츠노마키장켄", "ㅊㄴㅁㅋㅈㅋ", "장켄", "ㅈㅋ")</entry>
+    <entry key="Command_Rock">("rock", "바위", "주먹", "묵", "ㅂㅇ", "ㅈㅁ", "ㅁ")</entry>
+    <entry key="Command_Scissors">("scissors", "가위", "찌", "ㄱㅇ", "ㅉ")</entry>
+    <entry key="Command_Paper">("paper", "보자기", "보", "빠", "ㅂㅈㄱ", "ㅂ", "ㅃ")</entry>
+    <entry key="Command_Record">("record", "전적", "ㅈㅈ")</entry>
+    <entry key="Command_Help">("help", "?", "도움말", "ㄷㅇㅁ")</entry>
+
+    <entry key="Janken_NextDay">다음 날 다시 시도해주세요.</entry>
+
+    <entry key="Record_Title">{}님의 전적</entry>
+    <entry key="Record_Subtitle">{}승 {}패 {}무 (승률: {:.2f}%)</entry>
+    <entry key="Record_Win">승</entry>
+    <entry key="Record_Lose">패</entry>
+    <entry key="Record_Draw">무</entry>
+    <entry key="Record_Field">{0}. {1}. {2}. - {3}</entry>
+    <entry key="Record_OutOfRange">범위를 벗어났습니다.</entry>
+    <entry key="Record_InvalidIndexer">'{}'는 유효하지 않은 인덱서입니다.</entry>
+
+    <entry key="Help_Title">츠노마키장켄 명령어 도움말</entry>
+    <entry key="Help_Field">
+        [
+            {
+        		"name": "사용법",
+        		"value": ["!tsunomakijanken {세부 명령어} [인수...]"]
+        	},
+        	{
+        		"name": "별칭",
+        		"value": ["츠노마키장켄, ㅊㄴㅁㅋㅈㅋ, 장켄, ㅈㅋ"]
+        	},
+        	{
+        		"name": "세부 명령어",
+        		"value": ["rock, scissors, paper, record, help"]
+        	},
+        	{
+        		"name": "rock",
+        		"value": [
+                    "사용법: !tsunomakijanken rock",
+        			"별칭: 바위, 주먹, 묵, ㅂㅇ, ㅈㅁ, ㅁ",
+        			"설명: 가위바위보 게임에서 바위를 냅니다."
+        		]
+        	},
+        	{
+        		"name": "scissors",
+        		"value": [
+                    "사용법: !tsunomakijanken scissors",
+        			"별칭: 가위, 찌, ㄱㅇ, ㅉ",
+        			"설명: 가위바위보 게임에서 가위를 냅니다."
+        		]
+        	},
+        	{
+        		"name": "paper",
+        		"value": [
+                    "사용법: !tsunomakijanken paper",
+        			"별칭: 보자기, 보, 빠, ㅂㅈㄱ, ㅂ, ㅃ",
+        			"설명: 가위바위보 게임에서 보를 냅니다."
+        		]
+        	},
+        	{
+        		"name": "record",
+        		"value": [
+                    "사용법: !tsunomakijanken record [인덱서]",
+        			"별칭: 전적, ㅈㅈ",
+        			"설명: 현재까지의 전적을 보여줍니다."
+        		]
+        	},
+        	{
+        		"name": "record - 인덱서",
+        		"value": [
+                    "인덱서는 Python 문법을 따릅니다.",
+        			"문법: 'start[: end[: step]]'",
+        			"start는 전적 기록의 시작점을 의미합니다.",
+        			"end는 전적 기록의 끝점을 의미합니다.",
+        			"step은 몇 번 째 마다의 전적 기록을 의미합니다.",
+        			"아래 링크를 통해 더 자세한 사용법을 확인하세요:",
+        			"https://docs.python.org/3/whatsnew/2.3.html?highlight=slice#extended-slices"
+        		]
+        	},
+        	{
+        		"name": "help",
+        		"value": [
+                    "사용법: !tsunomakijanken help",
+        			"별칭: ?, 도움말, ㄷㅇㅁ",
+        			"설명: 명령어 도움말을 보여줍니다."
+        		]
+        	}
+        ]
+    </entry>
+</properties>

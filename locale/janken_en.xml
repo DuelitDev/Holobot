@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+    <entry key="Command_Alias">("janken", "tj")</entry>
+    <entry key="Command_Rock">("rock", "r")</entry>
+    <entry key="Command_Scissors">("scissors", "scissor", "s")</entry>
+    <entry key="Command_Paper">("paper", "p")</entry>
+    <entry key="Command_Record">("record", "rec")</entry>
+    <entry key="Command_Help">("help", "?", "h")</entry>
+
+    <entry key="Janken_NextDay">Please try again tomorrow.</entry>
+
+    <entry key="Record_Title">{}'s Record</entry>
+    <entry key="Record_Subtitle">{}W {}L {}D (Win rate: {:.2f}%)</entry>
+    <entry key="Record_Win">Win</entry>
+    <entry key="Record_Lose">Lose</entry>
+    <entry key="Record_Draw">Draw</entry>
+    <entry key="Record_Field">{2}/{1}/{0} - {3}</entry>
+    <entry key="Record_OutOfRange">Out of range.</entry>
+    <entry key="Record_InvalidIndexer">'{}' is an invalid indexer.</entry>
+
+    <entry key="Help_Title">Tsunomaki Janken Command Manual</entry>
+    <entry key="Help_Field">
+        [
+            {
+        		"name": "Usage",
+        		"value": ["!tsunomakijanken {details} [args...]"]
+        	},
+        	{
+        		"name": "Alias",
+        		"value": ["janken, tj"]
+        	},
+        	{
+        		"name": "details",
+        		"value": ["rock, scissors, paper, record, help"]
+        	},
+        	{
+        		"name": "rock",
+        		"value": [
+                    "Usage: !tsunomakijanken rock",
+        			"Alias: r",
+        			"Description: Throw out a rock in the game."
+        		]
+        	},
+        	{
+        		"name": "scissors",
+        		"value": [
+                    "Usage: !tsunomakijanken scissors",
+        			"Alias: scissor, s",
+        			"Description: Throw out scissors in the game."
+        		]
+        	},
+        	{
+        		"name": "paper",
+        		"value": [
+                    "Usage: !tsunomakijanken paper",
+        			"Alias: p",
+        			"Description: Throw out paper in the game."
+        		]
+        	},
+        	{
+        		"name": "record",
+        		"value": [
+                    "Usage: !tsunomakijanken record [indexer]",
+        			"Alias: rec",
+        			"Description: View your records so far."
+        		]
+        	},
+        	{
+        		"name": "record - indexer",
+        		"value": [
+                    "The indexer follows Python's slicing syntax.",
+        			"The syntax is: 'start[: end[: step]]'",
+        			"start means the beginning of the record.",
+        			"end means the end of the record.",
+        			"step means records every few times.",
+        			"Follow these links for more information:",
+        			"https://docs.python.org/3/whatsnew/2.3.html?highlight=slice#extended-slices"
+        		]
+        	},
+        	{
+        		"name": "help",
+        		"value": [
+                    "Usage: !tsunomakijanken help",
+        			"Alias: ?, h",
+        			"Description: View help for a command."
+        		]
+        	}
+        ]
+    </entry>
+</properties>

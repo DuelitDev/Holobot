@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="Command_Alias">("mu",)</entry>
+    <entry key="Command_Play">("play", "p")</entry>
+    <entry key="Command_Leave">("leave", "lv")</entry>
+    <entry key="Command_Search">("search", "s")</entry>
+    <entry key="Command_Loop">("loop", "lp")</entry>
+    <entry key="Command_Queue">("queue", "playlist", "list", "q", "pl", "li")</entry>
+    <entry key="Command_Help">("help", "?", "h")</entry>
+
+    <entry key="Search_Title">Search results for '{}'</entry>
+    <entry key="Search_Subtitle">{} search results, page {}</entry>
+    <entry key="Search_Field">**{}**, (ID: {})</entry>
+    <entry key="Search_Else">and {} others</entry>
+
+    <entry key="Play_JoinVoiceChannelFirst">Loop Status</entry>
+    <entry key="Play_InvalidID">{} is invalid ID.</entry>
+    <entry key="Play_PlayNext">Now Playing</entry>
+    <entry key="Play_AddQueue">Playlist Added</entry>
+
+    <entry key="Loop_True">Loop: on</entry>
+    <entry key="Loop_False">Loop: off</entry>
+    <entry key="Loop_NotExist">Please create a playlist by adding songs first.</entry>
+
+    <entry key="Queue_Title">Playlists</entry>
+    <entry key="Queue_Subtitle">{} playlists, page {}</entry>
+    <entry key="Queue_Field">**{}**, (ID: {})</entry>
+    <entry key="Queue_Else">and {} others</entry>
+    <entry key="Queue_NotExist">Please add the song to your playlist first.</entry>
+
+    <entry key="Help_Title">Music Player Command Manual</entry>
+    <entry key="Help_Field">
+        [
+            {
+        		"name": "Usage",
+        		"value": ["!music {details} [args...]"]
+        	},
+        	{
+        		"name": "Alias",
+        		"value": ["mu"]
+        	},
+        	{
+        		"name": "details",
+        		"value": ["play, leave, search, loop, queue, help"]
+        	},
+        	{
+        		"name": "play",
+        		"value": [
+                    "Usage: !music play {id}",
+        			"Alias: p",
+        			"Description: Play a music."
+        		]
+        	},
+        	{
+        		"name": "leave",
+        		"value": [
+                    "Usage: !music leave",
+        			"Alias: lv",
+        			"Description: Stop playing the music and leave the voice chat."
+        		]
+        	},
+        	{
+        		"name": "search",
+        		"value": [
+                    "Usage: !music search {query} [page]",
+        			"Alias: s",
+        			"Description: Shows the search results for the query."
+        		]
+        	},
+        	{
+        		"name": "loop",
+        		"value": [
+                    "Usage: !music loop",
+        			"Alias: lp",
+        			"Description: Toggles whether music repeats or not."
+        		]
+        	},
+        	{
+        		"name": "queue",
+        		"value": [
+                    "Usage: !music queue [page]",
+        			"Alias: playlist, list, q, pl, li",
+        			"Description: Shows a list of music to be played."
+        		]
+        	},
+        	{
+        		"name": "help",
+        		"value": [
+                    "Usage: !music help",
+        			"Alias: ?, h",
+        			"Description: View help for a command."
+        		]
+        	}
+        ]
+    </entry>
+</properties>

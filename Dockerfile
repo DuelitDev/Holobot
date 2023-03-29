@@ -1,0 +1,3 @@
+FROM duelitdev/holobot:latest
+
+

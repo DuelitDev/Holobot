@@ -6,3 +6,7 @@ RUN apt-get update && apt-get install -y nano wget python3.11 python3-pip libopu
     rm v2.4.1.230331.1.tar.gz && pip install -r /holobot/requirements.txt
 RUN echo "python3 /holobot/app.py" > /etc/init.d/holobot.sh
 ENV HOLOBOT_CONF_PATH /holobot/global-configure.conf
+
+WORKDIR /holobot/
+CMD ["python3", "/holobot/app.py"]
+

@@ -1,9 +1,9 @@
 FROM ubuntu:jammy
 
 RUN apt-get update && apt-get install -y nano wget python3.11 python3-pip libopus-dev
-RUN wget https://github.com/DuelitDev/Holobot/archive/refs/tags/v2.4.1.230331.5.tar.gz && \
-    tar xf v2.4.1.230331.5.tar.gz && mv Holobot-2.4.1.230331.5 holobot && \
-    rm v2.4.1.230331.5.tar.gz
+RUN wget https://github.com/DuelitDev/Holobot/archive/refs/tags/v2.4.1.230331.6.tar.gz && \
+    tar xf v2.4.1.230331.6.tar.gz && mv Holobot-2.4.1.230331.6 holobot && \
+    rm v2.4.1.230331.6.tar.gz
 RUN pip install -r /holobot/requirements.txt
 ENV HOLOBOT_CONF_PATH /holobot/global-configure.conf
 

@@ -9,4 +9,3 @@ ENV HOLOBOT_CONF_PATH /holobot/global-configure.conf
 
 WORKDIR /holobot/
 ENTRYPOINT ["python3", "app.py"]
-

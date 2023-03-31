@@ -12,6 +12,7 @@ SYSTEM_CONFIG_PATH = environ.get("HOLOBOT_CONF_PATH", "global-configure.conf")
 
 # initialize configure
 if not exists(SYSTEM_CONFIG_PATH):
+    print("Initialize global configure.")
     prop = Properties()
     prop.load(SYSTEM_CONFIG_PATH[:-5] + "-example.conf")
     for key in prop.keys():
@@ -19,6 +20,7 @@ if not exists(SYSTEM_CONFIG_PATH):
         if message:
             prop[key] = message
     prop.save(SYSTEM_CONFIG_PATH)
+    print("Initialize complete.")
 
 
 class Config:

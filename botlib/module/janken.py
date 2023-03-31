@@ -92,6 +92,7 @@ class JankenRecorder:
             (user_id, result.value, datetime.now().strftime("%Y-%m-%d"))
         )
         self._db_connect.commit()
+        _save_janken_db()
 
     def read_all(self, user_id: str) -> list[Record]:
         self._cursor.execute(

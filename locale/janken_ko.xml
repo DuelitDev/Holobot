@@ -7,7 +7,6 @@
     <entry key="Command_Scissors">("scissors", "가위", "찌", "ㄱㅇ", "ㅉ")</entry>
     <entry key="Command_Paper">("paper", "보자기", "보", "빠", "ㅂㅈㄱ", "ㅂ", "ㅃ")</entry>
     <entry key="Command_Record">("record", "전적", "ㅈㅈ")</entry>
-    <entry key="Command_Help">("help", "?", "도움말", "ㄷㅇㅁ")</entry>
 
     <entry key="Janken_NextDay">다음 날 다시 시도해주세요.</entry>
 

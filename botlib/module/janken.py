@@ -4,12 +4,12 @@
 from botlib.module.dev import _get_server_conf
 from botlib.sys.config import Config
 from botlib.sys.manager import Locale, LocaleProperties, StorageManager
-from botlib.sys.util import discord_command, discord_command_wrapper
+from botlib.sys.util import (discord_command, discord_command_wrapper,
+                             commands_help)
 from datetime import datetime
 from discord import Embed, File
 from discord.ext.commands import Context
 from enum import Enum, IntEnum
-from json import loads as loads_json
 from os.path import join as path_combine
 from re import findall as findall_regexp
 from sqlite3 import connect as connect_db
@@ -127,10 +127,8 @@ class Janken:
                 await self.game(ctx, locale, JankenType.Paper)
             case cmd if cmd in eval(locale.get("Command_Record")):
                 await self.record(ctx, locale, *args, **kwargs)
-            case cmd if cmd in eval(locale.get("Command_Help")):
-                await self.help(ctx, locale)
             case _:
-                await self.help(ctx, locale)
+                await commands_help(ctx, locale)
 
     @staticmethod
     async def game(ctx: Context, locale: LocaleProperties, choice: JankenType):
@@ -162,7 +160,10 @@ class Janken:
                 total[1] += 1
             elif record.result == JankenResult.Draw:
                 total[2] += 1
-        win_rate = total[0] / len(records) * 100
+        if len(records) > 0:
+            win_rate = (total[0] + total[2] * 0.5) / len(records) * 100
+        else:
+            win_rate = 0
         author = f"{ctx.author.name}#{ctx.author.discriminator}"
         title = locale.get("Record_Title").format(author)
         subtitle = locale.get("Record_Subtitle").format(*total, win_rate)
@@ -184,13 +185,4 @@ class Janken:
         embed = Embed(title=title, description=subtitle, color=0x82e6e6)
         for field in fields:
             embed.add_field(name=field, value="** **", inline=False)
-        await ctx.send(embed=embed)
-
-    @staticmethod
-    async def help(ctx: Context, locale: LocaleProperties):
-        embed = Embed(title=locale.get("Help_Title"), color=0x82e6e6)
-        descriptions = loads_json(locale.get("Help_Field"))
-        for description in descriptions:
-            description["value"] = "\n".join(description["value"])
-            embed.add_field(**description, inline=False)
         await ctx.send(embed=embed)

@@ -2,12 +2,13 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <entry key="Command_Alias">("mu",)</entry>
-    <entry key="Command_Play">("play", "p")</entry>
+    <entry key="Command_Play">("play", "pl")</entry>
     <entry key="Command_Leave">("leave", "lv")</entry>
-    <entry key="Command_Search">("search", "s")</entry>
+	<entry key="Command_Next">("next", "nx")</entry>
+    <entry key="Command_Search">("search", "sr")</entry>
     <entry key="Command_Loop">("loop", "lp")</entry>
+	<entry key="Command_Shuffle">("shuffle", "sh")</entry>
     <entry key="Command_Queue">("queue", "playlist", "list", "q", "pl", "li")</entry>
-    <entry key="Command_Help">("help", "?", "h")</entry>
 
     <entry key="Search_Title">Search results for '{}'</entry>
     <entry key="Search_Subtitle">{} search results, page {}</entry>
@@ -48,7 +49,7 @@
         		"name": "play",
         		"value": [
                     "Usage: !music play {id}",
-        			"Alias: p",
+        			"Alias: pl",
         			"Description: Play a music."
         		]
         	},
@@ -61,10 +62,18 @@
         		]
         	},
         	{
+        		"name": "next",
+        		"value": [
+                    "Usage: !music next",
+        			"Alias: nx",
+        			"Description: Play the next music."
+        		]
+        	},
+        	{
         		"name": "search",
         		"value": [
                     "Usage: !music search {query} [page]",
-        			"Alias: s",
+        			"Alias: sr",
         			"Description: Shows the search results for the query."
         		]
         	},
@@ -74,6 +83,14 @@
                     "Usage: !music loop",
         			"Alias: lp",
         			"Description: Toggles whether music repeats or not."
+        		]
+        	},
+		    {
+        		"name": "shuffle",
+        		"value": [
+                    "Usage: !music shuffle",
+        			"Alias: sh",
+        			"Description: Shuffle a list of music."
         		]
         	},
         	{

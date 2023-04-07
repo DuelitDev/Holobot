@@ -5,11 +5,11 @@ from __future__ import annotations
 from botlib.module.dev import _get_server_conf
 from botlib.sys.config import Config
 from botlib.sys.manager import Locale, LocaleProperties, StorageManager
-from botlib.sys.util import discord_command, discord_command_wrapper
+from botlib.sys.util import (discord_command, discord_command_wrapper,
+                             commands_help)
 from collections import deque as queue
 from discord import Embed, FFmpegOpusAudio
 from discord.ext.commands import Context
-from json import loads as loads_json
 from os import makedirs
 from os.path import join as path_combine
 from whoosh.analysis import FancyAnalyzer
@@ -213,6 +213,13 @@ class MusicQueue:
             return False
         return self._is_loop[id_]
 
+    def shuffle(self, ctx):
+        id_ = ctx.guild.id
+        if id_ not in self._queue:
+            return False
+        __import__("random").shuffle(self._queue[id_])
+        return True
+
     def is_empty(self, ctx):
         id_ = ctx.guild.id
         if id_ not in self._queue:
@@ -239,16 +246,18 @@ class Player:
                 await self.play(ctx, locale, *args, **kwargs)
             case cmd if cmd in eval(locale.get("Command_Leave")):
                 await self.leave(ctx)
+            case cmd if cmd in eval(locale.get("Command_Next")):
+                await self.next(ctx, locale)
             case cmd if cmd in eval(locale.get("Command_Search")):
                 await self.search(ctx, locale, *args, **kwargs)
             case cmd if cmd in eval(locale.get("Command_Loop")):
                 await self.loop(ctx, locale)
+            case cmd if cmd in eval(locale.get("Command_Shuffle")):
+                await self.shuffle(ctx, locale)
             case cmd if cmd in eval(locale.get("Command_Queue")):
                 await self.queue(ctx, locale)
-            case cmd if cmd in eval(locale.get("Command_Help")):
-                await self.help(ctx, locale)
             case _:
-                await self.help(ctx, locale)
+                await commands_help(ctx, locale)
 
     @staticmethod
     async def play(ctx: Context, locale: LocaleProperties, id_: str):
@@ -278,7 +287,7 @@ class Player:
             await ctx.send(locale.get("Play_InvalidID").format(id_))
 
     @staticmethod
-    async def _play_next(ctx, locale, pop: bool = False):
+    async def _play_next(ctx, locale: LocaleProperties, pop: bool = False):
         if not MusicQueue().is_empty(ctx):
             if pop:
                 MusicQueue().pop(ctx)
@@ -286,8 +295,9 @@ class Player:
             path = Music.get_resource(music.id)
             source = await FFmpegOpusAudio.from_probe(path)
             voice = ctx.voice_client
-            voice.play(source, after=lambda _: ctx.bot.loop.create_task(
-                Player._play_next(ctx, locale, True)))
+            voice.play(source, after=lambda e: (
+                print(e), ctx.bot.loop.create_task(
+                Player._play_next(ctx, locale, True))))
             embed = Embed(title=locale.get("Play_PlayNext"),
                           description=music.title, color=0x82e6e6)
             embed.set_thumbnail(url=Music.get_thumbnail_url(music.id))
@@ -298,6 +308,10 @@ class Player:
         if ctx.guild.voice_client:
             await ctx.guild.voice_client.disconnect(force=True)
             MusicQueue().free(ctx)
+
+    @staticmethod
+    async def next(ctx: Context, locale: LocaleProperties):
+        await Player._play_next(ctx, locale, True)
 
     @staticmethod
     async def search(ctx: Context, locale: LocaleProperties,
@@ -329,6 +343,28 @@ class Player:
         await ctx.send(embed=embed)
 
     @staticmethod
+    async def shuffle(ctx: Context, locale: LocaleProperties):
+        if not MusicQueue().is_exist(ctx):
+            await ctx.send(locale.get("Queue_NotExist"))
+            return
+        MusicQueue().shuffle(ctx)
+        musics = list(map(lambda x: x, MusicQueue().all(ctx)))[:9]
+        embeds = []
+        title = locale.get("Queue_Title")
+        subtitle = locale.get("Queue_Subtitle").format(len(musics))
+        embeds.append(Embed(title=title, description=subtitle, color=0x82e6e6))
+        for music in musics:
+            authors = music.authors[0]
+            if len(music.authors) > 1:
+                authors += locale.get("Queue_Else").format(len(authors) - 1)
+            field = locale.get("Queue_Field").format(authors, music.id)
+            embed = Embed(title=music.title, description=field, color=0x82e6e6)
+            embed.set_thumbnail(url=Music.get_thumbnail_url(music.id))
+            embeds.append(embed)
+        await ctx.send(embeds=embeds)
+        await Player._play_next(ctx, locale)
+
+    @staticmethod
     async def queue(ctx: Context, locale: LocaleProperties, page_: str = "1"):
         if not MusicQueue().is_exist(ctx):
             await ctx.send(locale.get("Queue_NotExist"))
@@ -348,12 +384,3 @@ class Player:
             embed.set_thumbnail(url=Music.get_thumbnail_url(music.id))
             embeds.append(embed)
         await ctx.send(embeds=embeds)
-
-    @staticmethod
-    async def help(ctx: Context, locale: LocaleProperties):
-        embed = Embed(title=locale.get("Help_Title"), color=0x82e6e6)
-        descriptions = loads_json(locale.get("Help_Field"))
-        for description in descriptions:
-            description["value"] = "\n".join(description["value"])
-            embed.add_field(**description, inline=False)
-        await ctx.send(embed=embed)

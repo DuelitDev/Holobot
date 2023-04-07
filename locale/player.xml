@@ -5,10 +5,11 @@
     <entry key="Command_Alias">()</entry>
     <entry key="Command_Play">("play",)</entry>
     <entry key="Command_Leave">("leave",)</entry>
+	<entry key="Command_Next">("next",)</entry>
     <entry key="Command_Search">("search",)</entry>
     <entry key="Command_Loop">("loop",)</entry>
+	<entry key="Command_Shuffle">("shuffle",)</entry>
     <entry key="Command_Queue">("queue",)</entry>
-    <entry key="Command_Help">("help",)</entry>
 
     <entry key="Search_Title">Search results for '{}'</entry>
     <entry key="Search_Subtitle">{} search results, page {}</entry>
@@ -62,6 +63,14 @@
         		]
         	},
         	{
+        		"name": "next",
+        		"value": [
+                    "Usage: !music next",
+        			"Alias: No aliases. Set the server locale to use aliases.",
+        			"Description: Play the next music."
+        		]
+        	},
+        	{
         		"name": "search",
         		"value": [
                     "Usage: !music search {query} [page]",
@@ -75,6 +84,14 @@
                     "Usage: !music loop",
         			"Alias: No aliases. Set the server locale to use aliases.",
         			"Description: Toggles whether music repeats or not."
+        		]
+        	},
+		    {
+        		"name": "shuffle",
+        		"value": [
+                    "Usage: !music shuffle",
+        			"Alias: No aliases. Set the server locale to use aliases.",
+        			"Description: Shuffle a list of music."
         		]
         	},
         	{

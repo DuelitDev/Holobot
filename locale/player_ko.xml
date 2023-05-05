@@ -4,10 +4,11 @@
     <entry key="Command_Alias">("뮤직", "노래", "음악", "ㅁㅈ", "ㄴㄹ", "ㅇㅁ")</entry>
     <entry key="Command_Play">("play", "플레이", "재생", "ㅍㄹㅇ", "ㅈㅅ")</entry>
     <entry key="Command_Leave">("leave", "나가기", "끊기", "ㄴㄱㄱ", "ㄲㄱ")</entry>
+	<entry key="Command_Next">("next", "다음", "ㄷㅇ")</entry>
     <entry key="Command_Search">("search", "검색", "찾기", "ㄱㅅ", "ㅊㄱ")</entry>
     <entry key="Command_Loop">("loop", "루프", "반복", "ㄹㅍ", "ㅂㅂ")</entry>
+	<entry key="Command_Shuffle">("shuffle", "섞기", "셔플", "ㅅㄱ", "ㅅㅍ")</entry>
     <entry key="Command_Queue">("queue", "큐", "재생목록", "목록", "ㅋ", "ㅈㅅㅁㄹ", "ㅁㄹ")</entry>
-    <entry key="Command_Help">("help", "?", "도움말", "ㄷㅇㅁ")</entry>
 
     <entry key="Search_Title">'{}'에 대한 검색 결과</entry>
     <entry key="Search_Subtitle">{}개의 검색 결과, {}페이지</entry>
@@ -61,6 +62,14 @@
         		]
         	},
         	{
+        		"name": "next",
+        		"value": [
+                    "사용법: !music next",
+        			"별칭: 다음, ㄷㅇ",
+        			"설명: 다음 곡을 재생합니다."
+        		]
+        	},
+        	{
         		"name": "search",
         		"value": [
                     "사용법: !music search {검색어} [페이지]",
@@ -74,6 +83,14 @@
                     "사용법: !music loop",
         			"별칭: 루프, 반복, ㄹㅍ, ㅂㅂ",
         			"설명: 노래를 반복 여부를 토글합니다."
+        		]
+        	},
+        	{
+        		"name": "shuffle",
+        		"value": [
+                    "사용법: !music shuffle",
+        			"별칭: 섞기, 셔플, ㅅㄱ, ㅅㅍ",
+        			"설명: 재생목록을 섞습니다."
         		]
         	},
         	{

@@ -4,13 +4,13 @@
 from botlib.module.dev import _get_server_conf
 from botlib.sys.config import Config
 from botlib.sys.manager import Locale, LocaleProperties, StorageManager
-from botlib.sys.util import discord_command, discord_command_wrapper, show_help
+from botlib.sys.util import discord_command, discord_command_wrapper
 from datetime import datetime
 from discord import Embed, File
 from discord.ext.commands import Context
 from enum import Enum, IntEnum
+from json import loads as loads_json
 from os.path import join as path_combine
-from random import randint
 from re import findall as findall_regexp
 from sqlite3 import connect as connect_db
 from uuid import uuid4
@@ -31,12 +31,12 @@ def _get_command_info() -> dict:
     return {"command_name": base_locale.get("Command"), "alias": alias}
 
 
-def _get_db() -> str:
+def _get_janken_db() -> str:
     key = path_combine(_JANKEN_DATA_ENTRY, "janken.sqlite")
     return StorageManager().get_to_file(key)
 
 
-def _save_db():
+def _save_janken_db():
     key = path_combine(_JANKEN_DATA_ENTRY, "janken.sqlite")
     path = path_combine(_CACHE_PATH, key)
     StorageManager().put_from_file(key, path)
@@ -83,7 +83,7 @@ class JankenRecorder:
         if self._initialized:
             return
         self._initialized = True
-        self._db_connect = connect_db(_get_db())
+        self._db_connect = connect_db(_get_janken_db())
         self._cursor = self._db_connect.cursor()
 
     def write(self, user_id: str, result: JankenResult):
@@ -92,7 +92,7 @@ class JankenRecorder:
             (user_id, result.value, datetime.now().strftime("%Y-%m-%d"))
         )
         self._db_connect.commit()
-        _save_db()
+        _save_janken_db()
 
     def read_all(self, user_id: str) -> list[Record]:
         self._cursor.execute(
@@ -117,6 +117,7 @@ class Janken:
     async def handler(self, ctx: Context, command: str = "", *args, **kwargs):
         conf = await _get_server_conf(ctx, only_admin=False)
         locale = LocaleProperties("janken", Locale(conf["Locale"]))
+        command = command.lower()
         match command.lower():
             case cmd if cmd in eval(locale.get("Command_Rock")):
                 await self.game(ctx, locale, JankenType.Rock)
@@ -126,8 +127,10 @@ class Janken:
                 await self.game(ctx, locale, JankenType.Paper)
             case cmd if cmd in eval(locale.get("Command_Record")):
                 await self.record(ctx, locale, *args, **kwargs)
+            case cmd if cmd in eval(locale.get("Command_Help")):
+                await self.help(ctx, locale)
             case _:
-                await show_help(ctx, locale)
+                await self.help(ctx, locale)
 
     @staticmethod
     async def game(ctx: Context, locale: LocaleProperties, choice: JankenType):
@@ -138,7 +141,7 @@ class Janken:
                 86400 > (datetime.now() - record.date).total_seconds()):
             await ctx.send(locale.get("Janken_NextDay"))
             return
-        bot_choice = JankenType(randint(0, 999999999) % 3)
+        bot_choice = JankenType(__import__("random").randint(0, 999999999) % 3)
         compare_table = {0: {0: "Draw", 1: "Win", 2: "Lose"},
                          1: {0: "Lose", 1: "Draw", 2: "Win"},
                          2: {0: "Win", 1: "Lose", 2: "Draw"}}
@@ -181,4 +184,13 @@ class Janken:
         embed = Embed(title=title, description=subtitle, color=0x82e6e6)
         for field in fields:
             embed.add_field(name=field, value="** **", inline=False)
+        await ctx.send(embed=embed)
+
+    @staticmethod
+    async def help(ctx: Context, locale: LocaleProperties):
+        embed = Embed(title=locale.get("Help_Title"), color=0x82e6e6)
+        descriptions = loads_json(locale.get("Help_Field"))
+        for description in descriptions:
+            description["value"] = "\n".join(description["value"])
+            embed.add_field(**description, inline=False)
         await ctx.send(embed=embed)

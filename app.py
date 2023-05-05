@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # app.py
 
-
 from botlib.module import Dev, Janken, Player
 from botlib.sys.config import Config
 from botlib.sys.util import add_all_commands

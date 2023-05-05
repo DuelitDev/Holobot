@@ -7,7 +7,6 @@
     <entry key="Command_Scissors">("scissors", "scissor", "s")</entry>
     <entry key="Command_Paper">("paper", "p")</entry>
     <entry key="Command_Record">("record", "rec")</entry>
-    <entry key="Command_Help">("help", "?", "h")</entry>
 
     <entry key="Janken_NextDay">Please try again tomorrow.</entry>
 

@@ -71,7 +71,7 @@
         		"name": "record - 인덱서",
         		"value": [
                     "인덱서는 Python 문법을 따릅니다.",
-        			"문법: 'start[: end[: step]]'",
+        			"문법: 'start[:end[:step]]'",
         			"start는 전적 기록의 시작점을 의미합니다.",
         			"end는 전적 기록의 끝점을 의미합니다.",
         			"step은 몇 번 째 마다의 전적 기록을 의미합니다.",

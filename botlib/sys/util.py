@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
 # botlib/sys/util.py
 
-from discord.ext.commands import Bot, Command
+from botlib.sys.manager import LocaleProperties
+from discord import Embed
+from discord.ext.commands import Bot, Command, Context
+from json import loads as loads_json
+
+__all__ = ["discord_command_wrapper",
+           "discord_command",
+           "add_all_commands",
+           "show_help"
+           ]
 
 
 def discord_command_wrapper(namespace: str = "", add_namespace: bool = False):
@@ -41,3 +50,12 @@ def add_all_commands(bot: Bot, wrapper: object, base: str = ""):
         elif hasattr(attr, "_discord_command_wrapper") and key != "__class__":
             namespace = getattr(wrapper, "_discord_command_wrapper_namespace")
             add_all_commands(bot, attr, f"{base}.{namespace}")
+
+
+async def show_help(ctx: Context, locale: LocaleProperties):
+    embed = Embed(title=locale.get("Help_Title"), color=0x82e6e6)
+    descriptions = loads_json(locale.get("Help_Field"))
+    for description in descriptions:
+        description["value"] = "\n".join(description["value"])
+        embed.add_field(**description, inline=False)
+    await ctx.send(embed=embed)

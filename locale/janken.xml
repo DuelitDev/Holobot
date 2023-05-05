@@ -30,7 +30,7 @@
         	},
         	{
         		"name": "Alias",
-        		"value": ["No aliases. Set the server locale to use aliases."]
+        		"value": [""]
         	},
         	{
         		"name": "details",
@@ -40,52 +40,44 @@
         		"name": "rock",
         		"value": [
                     "Usage: !tsunomakijanken rock",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: Throw out a rock in the game."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "scissors",
         		"value": [
                     "Usage: !tsunomakijanken scissors",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: Throw out scissors in the game."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "paper",
         		"value": [
                     "Usage: !tsunomakijanken paper",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: Throw out paper in the game."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "record",
         		"value": [
                     "Usage: !tsunomakijanken record [indexer]",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: View your records so far."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "record - indexer",
-        		"value": [
-                    "The indexer follows Python's slicing syntax.",
-        			"The syntax is: 'start[: end[: step]]'",
-        			"start means the beginning of the record.",
-        			"end means the end of the record.",
-        			"step means records every few times.",
-        			"Follow these links for more information:",
-        			"https://docs.python.org/3/whatsnew/2.3.html?highlight=slice#extended-slices"
-        		]
+        		"value": []
         	},
         	{
         		"name": "help",
         		"value": [
                     "Usage: !tsunomakijanken help",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: View help for a command."
+        			"Alias: ",
+        			"Description: "
         		]
         	}
         ]

@@ -39,7 +39,7 @@
         	},
         	{
         		"name": "Alias",
-        		"value": ["No aliases. Set the server locale to use aliases."]
+        		"value": [""]
         	},
         	{
         		"name": "details",
@@ -49,48 +49,48 @@
         		"name": "play",
         		"value": [
                     "Usage: !music play {id}",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: Play a music."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "leave",
         		"value": [
                     "Usage: !music leave",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: Stop playing the music and leave the voice chat."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "search",
         		"value": [
                     "Usage: !music search {query} [page]",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: Shows the search results for the query."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "loop",
         		"value": [
                     "Usage: !music loop",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: Toggles whether music repeats or not."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "queue",
         		"value": [
                     "Usage: !music queue [page]",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: Shows a list of music to be played."
+        			"Alias: ",
+        			"Description: "
         		]
         	},
         	{
         		"name": "help",
         		"value": [
                     "Usage: !music help",
-        			"Alias: No aliases. Set the server locale to use aliases.",
-        			"Description: View help for a command."
+        			"Alias: ",
+        			"Description: "
         		]
         	}
         ]
